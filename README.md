@@ -1,80 +1,73 @@
-# ScreenshotTool 📸
+# 📸 Screenshot Utility (Java)
 
-A lightweight Java command-line utility that captures a full-screen screenshot, generates a grayscale version, produces an inverted-image version, and packages all outputs into a single ZIP file.  
-Each run generates timestamp-based filenames to ensure uniqueness and clean organization.
+## 🌟 Project Overview
 
----
+This repository contains a simple, command-line utility written in **Java** designed for advanced screen capturing and image processing. Beyond taking a standard screenshot, the tool automatically applies two common image filters—**Grayscale** and **Inversion**—and packages all three resulting images into a single ZIP archive for immediate use.
 
-## Features
+This project is ideal for developers, testers, or users who require quick, filtered versions of their screen captures for documentation, debugging, or artistic purposes.
 
-- 🖼️ Capture full-screen screenshot  
-- ⚪ Convert image to grayscale  
-- 🔄 Invert grayscale image  
-- 📦 Automatically ZIP all generated files  
-- 🗂️ Saves all outputs to a user-specified folder
+## ✨ Key Features
 
----
+- **Full Screen Capture:** Captures the entire screen using Java's `java.awt.Robot` class.
+- **Automatic Filtering:**
+    - **Grayscale Conversion:** Converts the original screenshot to a Grayscale image.
+    - **Image Inversion:** Inverts the colors of the Grayscale image.
+- **Batch Output:** Saves the original, Grayscale, and Inverted images (as PNG files) to a specified output directory.
+- **Automatic Archiving:** Compresses all three output images into a single ZIP file, named with a timestamp for easy organization.
+- **Command-Line Interface:** Simple execution via the command line, requiring only the output path as an argument.
 
-## Requirements
+## 🛠️ Technology Stack
 
-- **Java JDK 8 or later** (JDK 17+ recommended)
-- Operating System with GUI support (Windows / Linux / macOS)
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Core Language** | Java | The entire utility is built using standard Java (AWT and ImageIO). |
+| **Image Processing** | `java.awt.image.BufferedImage` | Used for pixel-level manipulation to apply Grayscale and Inversion filters. |
+| **Screen Capture** | `java.awt.Robot` | Handles the low-level screen capture functionality. |
+| **Archiving** | `java.util.zip` | Used to compress the final output files into a single ZIP archive. |
 
-Verify Java installation:
+## 🚀 Getting Started
 
+### Prerequisites
 
-`java -version`
-`javac -version`
+- **Java Development Kit (JDK):** The project requires a Java Runtime Environment (JRE) to run, and a JDK to compile.
 
-Installation
-Clone the repository:
+### Compilation
 
+If you only have the source file (`ScreenshotTool.java`), you can compile it using the Java compiler:
 
-git clone https://github.com/your-username/ScreenshotTool.git
-
----
-
-### Navigate into the project:
-
-
-`cd ScreenshotTool`
-
-Build
-Compile the program:
-
-
-`javac ScreenshotTool.java`
-
-This will generate:
-
-cpp
-ScreenshotTool.class
-Usage
-Run the tool by specifying an output folder:
-
-
-java ScreenshotTool <output-folder-path>
-
-- Example (Windows)
-
-java ScreenshotTool C:\output
-
-- Example (Linux / macOS)
-
-
-java ScreenshotTool /home/user/output
-
-Output Files
+```bash
+javac ScreenshotTool.java
+```
 
 ---
 
-### How It Works *(Brief)*
+### Usage
 
-Screenshot: Uses java.awt.Robot to capture the full screen.
+The tool is executed from the command line and requires one argument: the absolute path to the desired output folder.
+```Bash
+# Example for Windows (using the provided run.bat)
+run.bat C:\Users\YourUser\Desktop\Screenshots
+```
+```bash
+# Example for Linux/macOS (assuming you have the compiled .class file)
+java ScreenshotTool /home/user/screenshots/output
+```
 
-Grayscale Conversion: Applies weighted RGB transformation for accurate luminance.
+- Output Files:
+The tool will create the following files in your specified output directory, all named with a unique timestamp
 
-Inversion: Flips grayscale pixel values (255 - value).
+### (e.g., screenshot_1702483200000):
+- screenshot_[timestamp].png (Original Capture)
+- screenshot_[timestamp]_gray.png (Grayscale Filter)
+- screenshot_[timestamp]_inverted.png (Inverted Filter)
+- screenshot_[timestamp].zip (Archive containing all three images)
 
-ZIP Packaging: Bundles all produced files using ZipOutputStream.
+  ---
+  
+### 🤝 Contributing
+This project is a personal utility, but suggestions and improvements are always welcome. Feel free to fork the repository and submit a Pull Request.
 
+---
+
+### 📄 License
+[Specify License, e.g., This project is open-source and available under the MIT License.]
